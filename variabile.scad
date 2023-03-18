@@ -13,7 +13,7 @@ grosime_laterale_sertar = 8;
 diametru_gauri_holzsurub = 2;
 diametru_gauri_surub = 6.1;
 diametru_cap_surub = 12;
-adancime_cap_surub = 6;
+adancime_cap_surub = 5;
 
 // dimensiuni slot-uri
 grosime_slot_sertar = grosime_fund_sertar + 1; //1mm toleranta
@@ -25,3 +25,5 @@ inaltime_initiala = 1;// primul slot pleaca putin deasupra fundului
 numar_suruburi_capace_sus_jos = 5;
 offset_suruburi_capace_sus_jos = 8; // de la marginea placii la centrul primei gauri
 distanta_fata_de_centru_gauri_laterale = 80;
+pozitie_gauri_de_sus = 2; // sloturi
+pozitie_gauri_de_jos = 2; // sloturi
