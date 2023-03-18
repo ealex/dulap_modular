@@ -50,9 +50,11 @@ module gauriSuruburiCapaceSusJos( pozitieCentru = 0 ){
     pozitieInitiala = -1*(adancime_exterioara_dulap/2-offset_suruburi_capace_sus_jos);
     
     increment = distantaUtila/(numar_suruburi_capace_sus_jos-1);
+    /*
     echo("distantaUtila",distantaUtila);
     echo("increment",increment);
     echo("pozitieInitiala",pozitieInitiala);
+    */
     for(cnt=[0:numar_suruburi_capace_sus_jos-1]) {
         pozitieX = pozitieInitiala + cnt*increment;
         translate([pozitieX, pozitieCentru, -grosime_exterior_dulap/2])
@@ -65,9 +67,31 @@ module gauriSuruburiCapaceSusJos( pozitieCentru = 0 ){
     defineste gaurile de prindere intre module pe laterale.
     
 */
-module gauriSuruburiFixareLaterala() {
+module gauraCompusaLaterala() {
+    union() {
+        translate([0,0,-adancime_cap_surub/2])
+            cylinder(h=adancime_cap_surub, r=diametru_cap_surub/2, center=true);
+        translate([0,0,-grosime_exterior_dulap/2])
+            cylinder(h=grosime_exterior_dulap , r=diametru_gauri_surub/2,center=true);
+    }
 }
-
+module gauriSuruburiFixareLaterala() {
+    // fata de muchia de sus
+    pozitie_de_sus = (inaltime_laterala/2 - grosime_exterior_dulap - pozitie_gauri_de_sus*inaltime_segment_dulap + grosime_slot_sertar + inaltime_utila_segment_dulap/2);
+    
+    translate([distanta_fata_de_centru_gauri_laterale/2,pozitie_de_sus,0])
+        gauraCompusaLaterala();
+    translate([-1*distanta_fata_de_centru_gauri_laterale/2,pozitie_de_sus,0])
+        gauraCompusaLaterala();
+    
+    // fata de muchia de jos
+    pozitie_de_jos = -1*(inaltime_laterala/2 - grosime_exterior_dulap - inaltime_initiala - pozitie_gauri_de_jos*inaltime_segment_dulap + inaltime_utila_segment_dulap/2);
+    translate([distanta_fata_de_centru_gauri_laterale/2,pozitie_de_jos,0])
+        gauraCompusaLaterala();
+    translate([-1*distanta_fata_de_centru_gauri_laterale/2,pozitie_de_jos,0])
+        gauraCompusaLaterala();
+    
+}
 
 /*
     aici se compune obiectul final
@@ -84,4 +108,6 @@ difference() {
     // gauri pentru capacele de sus si de jos
     gauriSuruburiCapaceSusJos(-1*(inaltime_laterala/2-grosime_exterior_dulap/2));
     gauriSuruburiCapaceSusJos((inaltime_laterala/2-grosime_exterior_dulap/2));
+    // gaurile pentru suruburile de fixare
+    gauriSuruburiFixareLaterala();
 }
