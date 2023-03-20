@@ -28,6 +28,7 @@ module sloturiCanale() {
     gaurile pentru holzsuruburi, pe lateralele lungi
     pun cate o gaura in fiecare slot, sa fiu sigur ca am structura
     suficient de rezistenta
+    aleg la ansamblare cate / cum montez
 */
 module gauriSuruburiLateraleLungi( pozitieCentru = 0 ) {
     pozitie_prima_gaura = -1*(inaltime_laterala/2 - grosime_exterior_dulap -  inaltime_initiala-grosime_slot_sertar-inaltime_utila_segment_dulap/2);
