@@ -1,0 +1,69 @@
+include <variabile.scad>
+
+/*
+    obiectul de baza include manerul
+*/
+module obiectDeBaza() {
+    union() {
+        translate([0,0, -grosime_fund_sertar/2])
+            cube([adancime_fund_sertar, latime_fund_sertar ,grosime_fund_sertar], true);
+        translate([adancime_fund_sertar/2+adancime_maner_fund_sertar/2,0,-grosime_fund_sertar/2])
+            cube([adancime_maner_fund_sertar, latime_maner_fund_sertar, grosime_fund_sertar],true);
+    }
+}
+
+
+/*
+    blocul asta formeaza niste fillet-uri mici in colturile vizibile
+*/
+module piesaRotunjireExteriorManer() {
+    translate([adancime_fund_sertar/2+adancime_maner_fund_sertar-raza_rotunjire_maner_fund_sertar,latime_maner_fund_sertar/2-raza_rotunjire_maner_fund_sertar,-grosime_fund_sertar/2])
+        difference() {
+            translate([0,0,-grosime_fund_sertar/2])
+            cube([raza_rotunjire_maner_fund_sertar,raza_rotunjire_maner_fund_sertar, grosime_fund_sertar]);
+            cylinder(h = grosime_fund_sertar, r=raza_rotunjire_maner_fund_sertar, center=true);
+        }
+}
+
+module piesaRotunjireInteriorManer() {
+    translate([adancime_fund_sertar/2+raza_rotunjire_maner_fund_sertar, latime_maner_fund_sertar/2+raza_rotunjire_maner_fund_sertar, -grosime_fund_sertar/2])
+    rotate([0,0,-180])
+    difference() {
+        translate([0,0,-grosime_fund_sertar/2])
+        cube([raza_rotunjire_maner_fund_sertar, raza_rotunjire_maner_fund_sertar, grosime_fund_sertar]);
+        cylinder(h = grosime_fund_sertar, r=raza_rotunjire_maner_fund_sertar, center=true);
+        
+    }
+}
+
+
+/*
+    sirul de gauri pentru laterala lunga
+*/
+module gauriLateralaLungaFundSertar() {
+    // aici stabilesc unde vine linia suruburilor
+    offsetY = latime_fund_sertar/2 - adancime_slot_sertar - toleranta_pereti_sertar - grosime_laterale_sertar/2;
+    lungimeUtilizabila = adancime_fund_sertar-2*offset_gauri_laterala_lunga_fund_sertar;
+    pas = lungimeUtilizabila/(numar_gauri_laterala_lunga_fund_sertar-1);
+    for(cnt=[0:1:numar_gauri_laterala_lunga_fund_sertar-1]) {
+        pozitieX = -1*(adancime_fund_sertar/2-offset_gauri_laterala_lunga_fund_sertar) + cnt*pas;
+        translate([pozitieX,offsetY,-grosime_fund_sertar/2])
+        cylinder(h=grosime_fund_sertar, r=diametru_gauri_holzsurub/2, center=true);
+    }
+}
+
+
+difference() {
+    union() {
+        obiectDeBaza();
+        piesaRotunjireInteriorManer();
+        mirror([0,1,0]) piesaRotunjireInteriorManer();
+    }
+    piesaRotunjireExteriorManer();
+    mirror([0,1,0]) piesaRotunjireExteriorManer();
+    if(true==gauri_fixare_laterala_lunga_sertar) {
+        gauriLateralaLungaFundSertar();
+        mirror([0,1,0]) gauriLateralaLungaFundSertar();
+    }
+}
+
