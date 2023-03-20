@@ -25,8 +25,8 @@ inaltime_initiala = 1;// primul slot pleaca putin deasupra fundului
 inaltime_segment_dulap = inaltime_utila_segment_dulap + grosime_slot_sertar;
 inaltime_laterala = 2*grosime_exterior_dulap + inaltime_initiala + inaltime_segment_dulap*numar_segmente_dulap;
 
-numar_suruburi_capace_sus_jos = 5;
-offset_suruburi_capace_sus_jos = 8; // de la marginea placii la centrul primei gauri
+numar_suruburi_capace_sus_jos = 3;
+offset_suruburi_capace_sus_jos = 20; // de la marginea placii la centrul primei gauri
 distanta_fata_de_centru_gauri_laterale = 80;
 pozitie_gauri_de_sus = 2; // sloturi
 pozitie_gauri_de_jos = 2; // sloturi
@@ -44,6 +44,34 @@ distanta_suruburi_fixare_module_sus_jos = 100; //mm
 distanta_suruburi_fixare_fund = 100; //mm or undef if not required
 adancime_fund = inaltime_laterala - 2*grosime_exterior_dulap;
 latime_fund = latime_exterioara_dulap - 2*grosime_exterior_dulap;
+
+
+
+
+/*
+    variabile specifice sertarelor
+*/
+toleranta_fund_sertar_laterale = 1;//mm - se imparte la 2 pt cele 2 margini
+toleranta_adangime_fund_sertar = 0.5;//mm - sertarul e putin mai scurt
+toleranta_pereti_sertar = 0.5; // de fiecare parte, intre dulap si sertar
+adancime_maner_fund_sertar = 20;// cat iese manerul in afara
+latime_maner_fund_sertar = 80;
+raza_rotunjire_maner_fund_sertar=5;
+
+// dimensiunile fundului de sertar
+adancime_fund_sertar = adancime_capac_sus_jos-grosime_exterior_dulap-toleranta_adangime_fund_sertar;
+// e echivalenta cu latimea capacelor sus/jos + adancime sloturi - toleranta in lateral
+latime_fund_sertar = (latime_exterioara_dulap - 2*grosime_exterior_dulap) + 2*adancime_slot_sertar - toleranta_fund_sertar_laterale;
+
+// parametrii pentru gaurile ce fixeaza laterala lunga in fundul de sertar
+gauri_fixare_laterala_lunga_sertar = true; // pune false ca sa dispara gaurile
+numar_gauri_laterala_lunga_fund_sertar = 3;
+offset_gauri_laterala_lunga_fund_sertar = 20;// de la margini, locatia primei gauri
+
+// parametrii pentru gaurile ce fixeaza laterala scurta in fundul de sertar
+gauri_fixare_laterala_scurta_sertar = true;
+
+
 
 // functii auxiliare
 /*
