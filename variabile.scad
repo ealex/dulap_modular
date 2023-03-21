@@ -65,11 +65,17 @@ latime_fund_sertar = (latime_exterioara_dulap - 2*grosime_exterior_dulap) + 2*ad
 
 // parametrii pentru gaurile ce fixeaza laterala lunga in fundul de sertar
 gauri_fixare_laterala_lunga_sertar = true; // pune false ca sa dispara gaurile
-numar_gauri_laterala_lunga_fund_sertar = 3;
 offset_gauri_laterala_lunga_fund_sertar = 20;// de la margini, locatia primei gauri
+numar_gauri_laterala_lunga_fund_sertar = 3; // numar impar neaparat, >1
+assert(numar_gauri_laterala_lunga_fund_sertar>1, "numar_gauri_laterala_lunga_fund_sertar trebuie sa fie mai mare ca 1");
+assert(1==numar_gauri_laterala_lunga_fund_sertar%2,"numar_gauri_laterala_lunga_fund_sertar trebuie sa fie un numar impar");
 
 // parametrii pentru gaurile ce fixeaza laterala scurta in fundul de sertar
-gauri_fixare_laterala_scurta_sertar = true;
+gauri_fixare_laterala_scurta_sertar = true; // pune false ca sa dispara
+offset_gauri_laterala_scurta_fund_sertar = 20;
+numar_gauri_laterala_scurta_fund_sertar = 3;
+assert(numar_gauri_laterala_scurta_fund_sertar>1,"numar_gauri_laterala_scurta_fund_sertar trebuie sa fie mai mare ca 1");
+assert(1==numar_gauri_laterala_scurta_fund_sertar%2,"numar_gauri_laterala_scurta_fund_sertar trebuie sa fie numar impar");
 
 
 

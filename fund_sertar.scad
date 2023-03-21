@@ -52,6 +52,20 @@ module gauriLateralaLungaFundSertar() {
     }
 }
 
+/*
+    sirul de gauri pentru laterala scurta
+*/
+module gauriLateralaScurtaFundSertar() {
+    offsetX = adancime_fund_sertar/2 - grosime_laterale_sertar/2;
+    lungimeUtilizabila = latime_fund_sertar - 2*offset_gauri_laterala_scurta_fund_sertar;
+    pas = lungimeUtilizabila / (numar_gauri_laterala_scurta_fund_sertar-1);
+    for(cnt=[0:1:(numar_gauri_laterala_scurta_fund_sertar-1)]) {
+        pozitieY = -1*(latime_fund_sertar/2-offset_gauri_laterala_scurta_fund_sertar) + pas *cnt;
+        translate([offsetX,pozitieY,-grosime_fund_sertar/2])
+        cylinder(h=grosime_fund_sertar, r=diametru_gauri_holzsurub/2, center=true);
+    }
+}
+
 
 difference() {
     union() {
@@ -64,6 +78,10 @@ difference() {
     if(true==gauri_fixare_laterala_lunga_sertar) {
         gauriLateralaLungaFundSertar();
         mirror([0,1,0]) gauriLateralaLungaFundSertar();
+    }
+    if(true == gauri_fixare_laterala_scurta_sertar) {
+        gauriLateralaScurtaFundSertar();
+        mirror([1,0,0]) gauriLateralaScurtaFundSertar();
     }
 }
 
