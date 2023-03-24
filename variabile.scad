@@ -19,8 +19,10 @@ adancime_cap_surub = 5;
 grosime_slot_sertar = grosime_fund_sertar + 1; //1mm toleranta
 adancime_slot_sertar = 3;
 
-
-//variabile specifice lateralei de sertar
+/*
+    variabile specifice dulapului exterior
+*/
+//variabile specifice lateralei de dulap
 inaltime_initiala = 1;// primul slot pleaca putin deasupra fundului
 inaltime_segment_dulap = inaltime_utila_segment_dulap + grosime_slot_sertar;
 inaltime_laterala = 2*grosime_exterior_dulap + inaltime_initiala + inaltime_segment_dulap*numar_segmente_dulap;
@@ -58,6 +60,15 @@ adancime_maner_fund_sertar = 20;// cat iese manerul in afara
 latime_maner_fund_sertar = 80;
 raza_rotunjire_maner_fund_sertar=5;
 
+// gauri folosite la ansamblarea sertarului
+diametru_gauri_aliniere_margini_sertar=3;
+foloseste_pini_aliniere_laterala_lunga = true;
+numar_gauri_aliniere_laterala_lunga=3;
+offset_gauri_aliniere_laterala_lunga=40;
+foloseste_pini_aliniere_laterala_scurta = true;
+numar_gauri_aliniere_laterala_scurta=3;
+offset_gauri_aliniere_laterala_scurta=30;
+
 // dimensiunile fundului de sertar
 adancime_fund_sertar = adancime_capac_sus_jos-grosime_exterior_dulap-toleranta_adangime_fund_sertar;
 // e echivalenta cu latimea capacelor sus/jos + adancime sloturi - toleranta in lateral
@@ -77,7 +88,10 @@ numar_gauri_laterala_scurta_fund_sertar = 3;
 assert(numar_gauri_laterala_scurta_fund_sertar>1,"numar_gauri_laterala_scurta_fund_sertar trebuie sa fie mai mare ca 1");
 assert(1==numar_gauri_laterala_scurta_fund_sertar%2,"numar_gauri_laterala_scurta_fund_sertar trebuie sa fie numar impar");
 
-
+// parametrii pentru laterala lunga de sertar
+numar_gauri_fixare_laterala_lunga_in_scurta = 1; // 1 sau numar impar
+offset_gauri_laterala_lunga_in_scurta = 0;
+assert(1==numar_gauri_fixare_laterala_lunga_in_scurta%2, "numar_gauri_fixare_laterala_lunga_in_scurta trebuie sa fie numar impar");
 
 // functii auxiliare
 /*
