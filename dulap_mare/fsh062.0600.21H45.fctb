@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "name": "fsh062.0600.21H45",
+  "shape": "endmill.fcstd",
+  "parameter": {
+    "Chipload": "0.000 mm",
+    "CuttingEdgeHeight": "45.000 mm",
+    "Diameter": "6.000 mm",
+    "Flutes": "0",
+    "Length": "80.000 mm",
+    "Material": "HSS",
+    "ShankDiameter": "6.000 mm",
+    "SpindleDirection": "Forward"
+  },
+  "attribute": {}
+}
