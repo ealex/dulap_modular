@@ -54,7 +54,7 @@ offset_laterala = 30; // de la peretele lateral
 
 
 //variabile specifice fundului de dulap
-distanta_suruburi_fixare_fund = 100; //mm or undef if not required
+distanta_suruburi_fixare_fund = 200; //mm or undef if not required
 adancime_fund = inaltime_laterala - 2*grosime_exterior_dulap;
 latime_fund = latime_exterioara_dulap - 2*grosime_exterior_dulap;
 

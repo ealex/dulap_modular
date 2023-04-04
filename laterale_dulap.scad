@@ -1,4 +1,4 @@
-include <variabile.scad>
+    include <variabile.scad>
 
 /* 
     creez laterala cu interiorul in sus
@@ -6,6 +6,10 @@ include <variabile.scad>
     obiectul de baza e de la 0 in jos
 */
 module obiectDeBaza() {
+    echo("OBIECT DE BAZA");
+    echo("inaltime_laterala:",inaltime_laterala);
+    echo("adancime_exterioara_dulap:",adancime_exterioara_dulap);
+    echo("");
     translate([0,0, -grosime_exterior_dulap/2])
         cube([adancime_exterioara_dulap, inaltime_laterala ,grosime_exterior_dulap], true);
 }
