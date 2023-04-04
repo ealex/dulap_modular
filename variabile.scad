@@ -10,7 +10,7 @@ grosime_fund_sertar = 8;
 grosime_laterale_sertar = 8;
 
 //gauri de surub si cap surub
-diametru_gauri_holzsurub = 2;
+diametru_gauri_holzsurub = 2.1;
 diametru_gauri_surub = 6.1;
 diametru_cap_surub = 12;
 adancime_cap_surub = 5;
