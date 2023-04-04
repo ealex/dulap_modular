@@ -4,6 +4,10 @@ include <variabile.scad>
     obiectul de baza, din care incep sa scad diferite feature-uri
 */
 module obiectDeBaza() {
+    echo("OBIECT DE BAZA");
+    echo("latime_capac_sus_jos", latime_capac_sus_jos);
+    echo("adancime_capac_sus_jos", adancime_capac_sus_jos);
+    echo("");
     translate([0,0, -grosime_exterior_dulap/2])
         cube([adancime_capac_sus_jos, latime_capac_sus_jos ,grosime_exterior_dulap], true);
 }
@@ -40,12 +44,38 @@ module gauriSuruburiFixareSusJos() {
         gauraCompusaLaterala();
 }
 
+module gauriFixarePicioare() {
+    centru_fata_de_x = adancime_capac_sus_jos/2 - (offset_fata + latime_suport_picioare/2);
+    centru_fata_de_y = latime_capac_sus_jos/2 - (offset_laterala + latime_suport_picioare/2);
+    
+    translate([centru_fata_de_x + distanta_gauri_picioare_centru_centru/2, centru_fata_de_y+ distanta_gauri_picioare_centru_centru/2,0])
+        gauraCompusaLaterala();
+    
+    translate([centru_fata_de_x - distanta_gauri_picioare_centru_centru/2, centru_fata_de_y- distanta_gauri_picioare_centru_centru/2,0])
+        gauraCompusaLaterala();
+    
+    translate([centru_fata_de_x + distanta_gauri_picioare_centru_centru/2, centru_fata_de_y - distanta_gauri_picioare_centru_centru/2,0])
+        gauraCompusaLaterala();
+    
+    translate([centru_fata_de_x- distanta_gauri_picioare_centru_centru/2, centru_fata_de_y + distanta_gauri_picioare_centru_centru/2,0])
+        gauraCompusaLaterala();
+}
+
+
+//gauriFixarePicioare();
 
 
 // compun obiectul final
+
 difference(){
     obiectDeBaza();
     gauriSurubPentruFund(adancime_capac_sus_jos/2-grosime_exterior_dulap/2);
     gauriSurubPentruFund(-1*(adancime_capac_sus_jos/2-grosime_exterior_dulap/2));
     gauriSuruburiFixareSusJos();
+    if(true==gauri_fixare_picioare) {
+        gauriFixarePicioare();
+        mirror([1,0,0]) gauriFixarePicioare();
+        mirror([0,1,0]) gauriFixarePicioare();
+        mirror([1,1,0]) gauriFixarePicioare();
+    }
 }

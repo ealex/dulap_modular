@@ -1,23 +1,23 @@
 //parametrii generali
-latime_exterioara_dulap = 200; //mm
-adancime_exterioara_dulap = 240; //mm
-inaltime_utila_segment_dulap = 21; //inaltimea utila minima
-numar_segmente_dulap = 6;
+latime_exterioara_dulap = 500; //mm
+adancime_exterioara_dulap = 500; //mm
+inaltime_utila_segment_dulap = 90; //inaltimea utila minima
+numar_segmente_dulap = 4;
 
 //definitii legate de materiale
-grosime_exterior_dulap = 8;
-grosime_fund_sertar = 8;
-grosime_laterale_sertar = 8;
+grosime_exterior_dulap = 15;
+grosime_fund_sertar = 15;
+grosime_laterale_sertar = 15;
 
 //gauri de surub si cap surub
-diametru_gauri_holzsurub = 2;
+diametru_gauri_holzsurub = 3;
 diametru_gauri_surub = 6.1;
 diametru_cap_surub = 12;
 adancime_cap_surub = 5;
 
 // dimensiuni slot-uri
 grosime_slot_sertar = grosime_fund_sertar + 1; //1mm toleranta
-adancime_slot_sertar = 3;
+adancime_slot_sertar = 6;
 
 /*
     variabile specifice dulapului exterior
@@ -26,20 +26,31 @@ adancime_slot_sertar = 3;
 inaltime_initiala = 1;// primul slot pleaca putin deasupra fundului
 inaltime_segment_dulap = inaltime_utila_segment_dulap + grosime_slot_sertar;
 inaltime_laterala = 2*grosime_exterior_dulap + inaltime_initiala + inaltime_segment_dulap*numar_segmente_dulap;
+echo();
+echo("inaltime_segment_dulap: ",inaltime_segment_dulap);
+echo("inaltime_laterala: ",inaltime_laterala);
+echo();
 
-numar_suruburi_capace_sus_jos = 3;
-offset_suruburi_capace_sus_jos = 20; // de la marginea placii la centrul primei gauri
-distanta_fata_de_centru_gauri_laterale = 80;
+numar_suruburi_capace_sus_jos = 5;
+offset_suruburi_capace_sus_jos = 30; // de la marginea placii la centrul primei gauri
+//distanta_fata_de_centru_gauri_laterale = 100;
+distanta_fata_de_centru_gauri_laterale =adancime_exterioara_dulap/3;
 pozitie_gauri_de_sus = 2; // sloturi
-pozitie_gauri_de_jos = 2; // sloturi
+pozitie_gauri_de_jos = 1; // sloturi
 
 
 //variabile specifice capacelor de sus si jos
 adancime_capac_sus_jos = adancime_exterioara_dulap; //mm
 latime_capac_sus_jos = latime_exterioara_dulap - 2*grosime_exterior_dulap;
 numar_suruburi_capac_fund = 5; // in cate suruburi fixez fundul
-offset_suruburi_fund = 8; // de la marginea bucatii la centrul primei gauri
-distanta_suruburi_fixare_module_sus_jos = 100; //mm
+offset_suruburi_fund = 30; // de la marginea bucatii la centrul primei gauri
+distanta_suruburi_fixare_module_sus_jos = adancime_capac_sus_jos/3; //mm
+
+gauri_fixare_picioare = true;
+distanta_gauri_picioare_centru_centru = 50;
+latime_suport_picioare = 80;
+offset_fata = 30; // de la marginea din fata 
+offset_laterala = 30; // de la peretele lateral
 
 
 //variabile specifice fundului de dulap
