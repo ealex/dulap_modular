@@ -12,7 +12,7 @@ grosime_laterale_sertar = 15;
 //gauri de surub si cap surub
 diametru_gauri_holzsurub = 2.5;
 diametru_gauri_surub = 6.1;
-diametru_cap_surub = 12;
+diametru_cap_surub = 16;
 adancime_cap_surub = 5;
 
 // dimensiuni slot-uri
@@ -64,8 +64,10 @@ latime_fund = latime_exterioara_dulap - 2*grosime_exterior_dulap;
 /*
     variabile specifice sertarelor
 */
-toleranta_fund_sertar_laterale = 1;//mm - se imparte la 2 pt cele 2 margini
-toleranta_adangime_fund_sertar = 0.5;//mm - sertarul e putin mai scurt
+// trebui ajustata in functie de dulap si grosimile reale
+// la placajul meu,se mai aduna 2mm 
+toleranta_fund_sertar_laterale = -1.5;//mm - se imparte la 2 pt cele 2 margini
+toleranta_adancime_fund_sertar = 5;//mm - sertarul e putin mai scurt
 toleranta_pereti_sertar = 0.5; // de fiecare parte, intre dulap si sertar
 adancime_maner_fund_sertar = 20;// cat iese manerul in afara
 latime_maner_fund_sertar = 80;
@@ -81,9 +83,11 @@ numar_gauri_aliniere_laterala_scurta=3;
 offset_gauri_aliniere_laterala_scurta=30;
 
 // dimensiunile fundului de sertar
-adancime_fund_sertar = adancime_capac_sus_jos-grosime_exterior_dulap-toleranta_adangime_fund_sertar;
+adancime_fund_sertar = adancime_capac_sus_jos-grosime_exterior_dulap-toleranta_adancime_fund_sertar;
 // e echivalenta cu latimea capacelor sus/jos + adancime sloturi - toleranta in lateral
-latime_fund_sertar = (latime_exterioara_dulap - 2*grosime_exterior_dulap) + 2*adancime_slot_sertar - toleranta_fund_sertar_laterale;
+latime_fund_sertar = (latime_exterioara_dulap - 2*grosime_exterior_dulap) + 2*adancime_slot_sertar-toleranta_fund_sertar_laterale;
+echo("adancime_fund_sertar:",adancime_fund_sertar);
+echo("latime_fund_sertar:", latime_fund_sertar);
 
 // parametrii pentru gaurile ce fixeaza laterala lunga in fundul de sertar
 gauri_fixare_laterala_lunga_sertar = true; // pune false ca sa dispara gaurile
