@@ -10,10 +10,16 @@ grosime_fund_sertar = 15;
 grosime_laterale_sertar = 15;
 
 //gauri de surub si cap surub
-diametru_gauri_holzsurub = 2.5;
-diametru_gauri_surub = 6.1;
-diametru_cap_surub = 16;
-adancime_cap_surub = 5;
+diametru_gauri_holzsurub = 3;
+diametru_gauri_surub = 2.1; //doar pt ghidare, dau gaura cu 8mm lemn
+diametru_cap_surub = 20;
+// calculez adancimea din datele surubului
+lungime_filet_surub = 20; //mm
+lungime_filet_ramas = 10; //mm, cat ramane pentru piulita
+adancime_cap_surub = (grosime_laterale_sertar - (lungime_filet_surub-lungime_filet_ramas)/2);
+echo();
+echo("adancime_cap_surub:", adancime_cap_surub);
+echo();
 
 // dimensiuni slot-uri
 grosime_slot_sertar = grosime_fund_sertar + 1; //1mm toleranta
