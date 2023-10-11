@@ -10,7 +10,7 @@ grosime_fund_sertar = 15;
 grosime_laterale_sertar = 15;
 
 //gauri de surub si cap surub
-diametru_gauri_holzsurub = 3;
+diametru_gauri_holzsurub = 2.1;
 diametru_gauri_surub = 2.1; //doar pt ghidare, dau gaura cu 8mm lemn
 diametru_cap_surub = 20;
 // calculez adancimea din datele surubului
