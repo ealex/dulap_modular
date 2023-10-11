@@ -1,8 +1,16 @@
 include <variabile.scad>
 
 module obiectDeBaza() {
+    
+    lungimeFundSertar = adancime_fund_sertar;
+    inaltimeFundSertar = inaltime_utila_segment_dulap - toleranta_inaltime_sertar;
+    echo("---");
+    echo("LATERALA LUNGA SERTAR");
+    echo("lungime fund sertar", lungimeFundSertar);
+    echo("inaltime fund sertar", inaltimeFundSertar);
+    echo("");
     translate([0,0, -grosime_laterale_sertar/2])
-        cube([adancime_fund_sertar, inaltime_utila_segment_dulap ,grosime_laterale_sertar], true);
+        cube([lungimeFundSertar, inaltimeFundSertar ,grosime_laterale_sertar], true);
 }
 
 

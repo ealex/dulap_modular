@@ -72,14 +72,19 @@ latime_fund = latime_exterioara_dulap - 2*grosime_exterior_dulap;
 */
 // trebui ajustata in functie de dulap si grosimile reale
 // la placajul meu,se mai aduna 2mm 
-toleranta_fund_sertar_laterale = -1.5;//mm - se imparte la 2 pt cele 2 margini
-toleranta_adancime_fund_sertar = 5;//mm - sertarul e putin mai scurt
-toleranta_pereti_sertar = 0.5; // de fiecare parte, intre dulap si sertar
+toleranta_fund_sertar_laterale = 0;//mm - se imparte la 2 pt cele 2 margini, vezi pt ce corp le faci
+toleranta_adancime_fund_sertar = 2;//mm - sertarul e putin mai scurt
+toleranta_pereti_sertar = 1; // de fiecare parte, intre dulap si sertar, muta centrul gaurilor spre centrul fundului de sertar
+toleranta_inaltime_sertar = 1;
+
+gaura_maner = 1;
+diametru_gaura_maner=4.1;
+/*
 adancime_maner_fund_sertar = 20;// cat iese manerul in afara
 latime_maner_fund_sertar = 80;
 raza_rotunjire_maner_fund_sertar=5;
-
-// gauri folosite la ansamblarea sertarului
+*/
+//gauri folosite la ansamblarea sertarului, auxiliare
 diametru_gauri_aliniere_margini_sertar=3;
 foloseste_pini_aliniere_laterala_lunga = true;
 numar_gauri_aliniere_laterala_lunga=3;
